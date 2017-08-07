@@ -1,0 +1,24 @@
+apply plugin: 'java'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+jar {
+    destinationDir = file('./')
+    manifest {
+        from 'src/main/java/MANIFEST.MF'
+    }
+}
+
+task cleanJar(type: Delete) {
+    delete 'bangou.jar'
+}
+
+task cleanIdeaOut(type: Delete) {
+    delete 'out/'
+}
+
+clean.dependsOn cleanIdeaOut
+
+defaultTasks 'build'
