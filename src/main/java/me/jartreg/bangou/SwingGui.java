@@ -14,7 +14,7 @@ import java.awt.datatransfer.StringSelection;
 @Deprecated
 public class SwingGui {
 	private static final String[] OUTPUT_FORMATS = {
-			"Romaji",
+			"Rōmaji",
 			"Kana",
 			"Kanji"
 	};

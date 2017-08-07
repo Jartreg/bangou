@@ -60,7 +60,7 @@ public class App extends Application {
 		spacedCheckBox = new CheckBox("Add spaces to improve readability");
 		spacedCheckBox.setSelected(true);
 
-		formatBox = new ChoiceBox<>(FXCollections.observableArrayList("Romaji", "Kana", "Kanji"));
+		formatBox = new ChoiceBox<>(FXCollections.observableArrayList("Rōmaji", "Kana", "Kanji"));
 		formatBox.getSelectionModel().select(0);
 		formatBox.setTooltip(new Tooltip("Writing system"));
 
@@ -115,7 +115,7 @@ public class App extends Application {
 							return new KanaGenerator(spacedCheckBox.isSelected());
 						case "Kanji":
 							return new KanjiGenerator();
-						default: //Romaji
+						default: //Rōmaji
 							return new RomajiGenerator(spacedCheckBox.isSelected());
 					}
 				},
