@@ -7,7 +7,7 @@ tasks.withType(JavaCompile) {
 jar {
 	destinationDir = file('./')
 	manifest {
-		from 'src/main/java/MANIFEST.MF'
+		from 'src/main/java/META-INF/MANIFEST.MF'
 	}
 }
 
