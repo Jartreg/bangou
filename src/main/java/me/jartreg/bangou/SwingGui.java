@@ -1,7 +1,7 @@
 package me.jartreg.bangou;
 
 import me.jartreg.bangou.generators.IrregularCasesGenerator;
-import me.jartreg.bangou.generators.KanaGenerator;
+import me.jartreg.bangou.generators.HiraganaGenerator;
 import me.jartreg.bangou.generators.KanjiGenerator;
 import me.jartreg.bangou.generators.RomajiGenerator;
 
@@ -15,7 +15,7 @@ import java.awt.datatransfer.StringSelection;
 public class SwingGui {
 	private static final String[] OUTPUT_FORMATS = {
 			"Rōmaji",
-			"Kana",
+			"Hiragana",
 			"Kanji"
 	};
 
@@ -48,7 +48,7 @@ public class SwingGui {
 					generator = new RomajiGenerator(spacedCheckBox.isSelected());
 					break;
 				case 1:
-					generator = new KanaGenerator(spacedCheckBox.isSelected());
+					generator = new HiraganaGenerator(spacedCheckBox.isSelected());
 					break;
 				case 2:
 					generator = new KanjiGenerator();

@@ -22,7 +22,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import me.jartreg.bangou.generators.IrregularCasesGenerator;
-import me.jartreg.bangou.generators.KanaGenerator;
+import me.jartreg.bangou.generators.HiraganaGenerator;
 import me.jartreg.bangou.generators.KanjiGenerator;
 import me.jartreg.bangou.generators.RomajiGenerator;
 
@@ -60,7 +60,7 @@ public class App extends Application {
 		spacedCheckBox = new CheckBox("Add spaces to improve readability");
 		spacedCheckBox.setSelected(true);
 
-		formatBox = new ChoiceBox<>(FXCollections.observableArrayList("Rōmaji", "Kana", "Kanji"));
+		formatBox = new ChoiceBox<>(FXCollections.observableArrayList("Rōmaji", "Hiragana", "Kanji"));
 		formatBox.getSelectionModel().select(0);
 		formatBox.setTooltip(new Tooltip("Writing system"));
 
@@ -111,8 +111,8 @@ public class App extends Application {
 	private void setupBindings() {
 		Binding<TextGenerator> generator = Bindings.createObjectBinding(() -> {
 					switch (formatBox.getSelectionModel().getSelectedItem()) {
-						case "Kana":
-							return new KanaGenerator(spacedCheckBox.isSelected());
+						case "Hiragana":
+							return new HiraganaGenerator(spacedCheckBox.isSelected());
 						case "Kanji":
 							return new KanjiGenerator();
 						default: //Rōmaji

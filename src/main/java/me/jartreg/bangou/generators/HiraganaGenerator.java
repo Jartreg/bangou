@@ -1,6 +1,6 @@
 package me.jartreg.bangou.generators;
 
-public class KanaGenerator extends IrregularCasesGenerator {
+public class HiraganaGenerator extends IrregularCasesGenerator {
 	private static final String[] DIGITS = {
 			"",
 			"",
@@ -14,7 +14,7 @@ public class KanaGenerator extends IrregularCasesGenerator {
 			"きゅう"
 	};
 
-	public KanaGenerator(boolean spaced) {
+	public HiraganaGenerator(boolean spaced) {
 		super(spaced);
 	}
 
