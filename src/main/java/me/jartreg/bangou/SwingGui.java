@@ -3,7 +3,7 @@ package me.jartreg.bangou;
 import me.jartreg.bangou.generators.IrregularCasesGenerator;
 import me.jartreg.bangou.generators.HiraganaGenerator;
 import me.jartreg.bangou.generators.KanjiGenerator;
-import me.jartreg.bangou.generators.RomajiGenerator;
+import me.jartreg.bangou.generators.RoumajiGenerator;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -24,7 +24,7 @@ public class SwingGui {
 	private final JLabel outputLabel;
 	private final JButton copyButton;
 
-	private TextGenerator generator = new RomajiGenerator(true);
+	private TextGenerator generator = new RoumajiGenerator(true);
 	private boolean resetStyles = false;
 
 	public SwingGui() {
@@ -45,7 +45,7 @@ public class SwingGui {
 		formatComboBox.addItemListener(e -> {
 			switch (formatComboBox.getSelectedIndex()) {
 				case 0:
-					generator = new RomajiGenerator(spacedCheckBox.isSelected());
+					generator = new RoumajiGenerator(spacedCheckBox.isSelected());
 					break;
 				case 1:
 					generator = new HiraganaGenerator(spacedCheckBox.isSelected());

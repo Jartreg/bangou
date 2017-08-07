@@ -1,6 +1,6 @@
 package me.jartreg.bangou.generators;
 
-public class RomajiGenerator extends IrregularCasesGenerator {
+public class RoumajiGenerator extends IrregularCasesGenerator {
 	private static final String[] DIGITS = {
 			"",
 			"",
@@ -14,7 +14,7 @@ public class RomajiGenerator extends IrregularCasesGenerator {
 			"kyū"
 	};
 
-	public RomajiGenerator(boolean spaced) {
+	public RoumajiGenerator(boolean spaced) {
 		super(spaced);
 	}
 

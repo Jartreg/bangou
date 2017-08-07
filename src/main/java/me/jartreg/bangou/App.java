@@ -24,7 +24,7 @@ import javafx.stage.Stage;
 import me.jartreg.bangou.generators.IrregularCasesGenerator;
 import me.jartreg.bangou.generators.HiraganaGenerator;
 import me.jartreg.bangou.generators.KanjiGenerator;
-import me.jartreg.bangou.generators.RomajiGenerator;
+import me.jartreg.bangou.generators.RoumajiGenerator;
 
 public class App extends Application {
 	private TextField numberInput;
@@ -116,7 +116,7 @@ public class App extends Application {
 						case "Kanji":
 							return new KanjiGenerator();
 						default: //Rōmaji
-							return new RomajiGenerator(spacedCheckBox.isSelected());
+							return new RoumajiGenerator(spacedCheckBox.isSelected());
 					}
 				},
 				formatBox.getSelectionModel().selectedItemProperty());
