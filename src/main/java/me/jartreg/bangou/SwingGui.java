@@ -1,8 +1,5 @@
 package me.jartreg.bangou;
 
-import com.sun.java.swing.plaf.motif.MotifLookAndFeel;
-import com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel;
-import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 import me.jartreg.bangou.generators.IrregularCasesGenerator;
 import me.jartreg.bangou.generators.KanaGenerator;
 import me.jartreg.bangou.generators.KanjiGenerator;
@@ -11,14 +8,11 @@ import me.jartreg.bangou.generators.RomajiGenerator;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.plaf.metal.DefaultMetalTheme;
-import javax.swing.plaf.metal.MetalLookAndFeel;
-import javax.swing.plaf.metal.MetalTheme;
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 
-public class Gui {
+@Deprecated
+public class SwingGui {
 	private static final String[] OUTPUT_FORMATS = {
 			"Romaji",
 			"Kana",
@@ -33,7 +27,7 @@ public class Gui {
 	private TextGenerator generator = new RomajiGenerator(true);
 	private boolean resetStyles = false;
 
-	public Gui() {
+	public SwingGui() {
 		frame = new JFrame("Bangō");
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -98,7 +92,7 @@ public class Gui {
 		});
 
 		GridBagConstraints c = new GridBagConstraints();
-		c.insets = new Insets(10,10,10,0);
+		c.insets = new Insets(10, 10, 10, 0);
 
 		c.weightx = 1;
 		c.anchor = GridBagConstraints.LINE_START;
@@ -135,7 +129,7 @@ public class Gui {
 	public static void setupLookAndFeel() {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e){//(UnsupportedLookAndFeelException | ClassNotFoundException | IllegalAccessException | InstantiationException e) {
+		} catch (Exception e) {//(UnsupportedLookAndFeelException | ClassNotFoundException | IllegalAccessException | InstantiationException e) {
 			e.printStackTrace();
 		}
 	}

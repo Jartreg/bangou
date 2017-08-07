@@ -8,13 +8,12 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
@@ -29,11 +28,14 @@ import me.jartreg.bangou.generators.RomajiGenerator;
 
 public class App extends Application {
 	private TextField numberInput;
-	private CheckBox spacedCheckBox;
 	private ChoiceBox<String> formatBox;
+	private CheckBox spacedCheckBox;
+
 	private Text outputText = new Text();
-	private Button copyButton;
+
 	private ComboBox<String> fontBox;
+	private Button copyButton;
+
 	private double fontSize;
 
 	@Override
@@ -41,8 +43,8 @@ public class App extends Application {
 		setupControls();
 		setupBindings();
 
-		Parent root = setupLayout();
-		Scene scene = new Scene(root, 500, 350);
+		Pane root = setupLayout();
+		Scene scene = new Scene(root, Region.USE_PREF_SIZE, 350);
 
 		primaryStage.setTitle("Bangō");
 		primaryStage.setScene(scene);
@@ -60,10 +62,12 @@ public class App extends Application {
 
 		formatBox = new ChoiceBox<>(FXCollections.observableArrayList("Romaji", "Kana", "Kanji"));
 		formatBox.getSelectionModel().select(0);
+		formatBox.setTooltip(new Tooltip("Writing system"));
 
 		fontSize = Font.getDefault().getSize() * 2.5;
 		fontBox = new ComboBox<>(FXCollections.observableArrayList(Font.getFamilies()));
 		fontBox.getSelectionModel().select(Font.getDefault().getName());
+		fontBox.setTooltip(new Tooltip("Font"));
 
 		copyButton = new Button("Copy");
 		copyButton.setMinWidth(70);
@@ -74,7 +78,7 @@ public class App extends Application {
 		});
 	}
 
-	private Parent setupLayout() {
+	private Pane setupLayout() {
 		GridPane grid = new GridPane();
 		grid.setPadding(new Insets(10));
 		grid.setHgap(10);

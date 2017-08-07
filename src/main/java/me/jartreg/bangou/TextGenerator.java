@@ -15,7 +15,7 @@ public abstract class TextGenerator {
 			generatedNumber.addAll(0, generatePart(digits, index, zeroes));
 		}
 
-		if(generatedNumber.size() == 0)
+		if (generatedNumber.size() == 0)
 			generatedNumber.add(getZero());
 
 		return join(generatedNumber);
@@ -53,7 +53,7 @@ public abstract class TextGenerator {
 			if (suffix == null)
 				throw new IllegalArgumentException("The number is too big");
 
-			if(!suffix.isEmpty())
+			if (!suffix.isEmpty())
 				part.add(suffix);
 		}
 

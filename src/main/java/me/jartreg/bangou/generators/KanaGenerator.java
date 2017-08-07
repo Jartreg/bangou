@@ -1,7 +1,5 @@
 package me.jartreg.bangou.generators;
 
-import java.util.ArrayList;
-
 public class KanaGenerator extends IrregularCasesGenerator {
 	private static final String[] DIGITS = {
 			"",
