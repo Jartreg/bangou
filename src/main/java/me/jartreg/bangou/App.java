@@ -174,7 +174,7 @@ public class App extends Application {
 						.otherwise(outputText.getFill())
 		);
 
-		copyButton.disableProperty().bind(error.not().and(Bindings.isEmpty(numberText)));
+		copyButton.disableProperty().bind(error.or(Bindings.isEmpty(numberText)));
 
 		outputText.fontProperty().bind(
 				Bindings.createObjectBinding(
