@@ -4,6 +4,12 @@ public final class Utilities {
 	private Utilities() {
 	}
 
+	/**
+	 * Extract digits from a string into an array of integers.
+	 * @param number the number string
+	 * @return an array of integers representing the digits
+	 * @throws NumberFormatException if <code>number</code> contains any non-digit characters
+	 */
 	public static int[] getDigits(String number) throws NumberFormatException {
 		int[] digits = new int[number.length()];
 

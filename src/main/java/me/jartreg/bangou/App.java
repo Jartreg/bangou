@@ -71,7 +71,7 @@ public class App extends Application {
 
 		copyButton = new Button("Copy");
 		copyButton.setMinWidth(70);
-		copyButton.setOnAction(event -> {
+		copyButton.setOnAction(event -> { // copy the number to the clipboard
 			ClipboardContent content = new ClipboardContent();
 			content.putString(outputText.getText());
 			Clipboard.getSystemClipboard().setContent(content);
@@ -84,6 +84,7 @@ public class App extends Application {
 		grid.setHgap(10);
 		grid.setVgap(10);
 
+		// first row
 		grid.add(numberInput, 0, 0);
 		numberInput.setMaxWidth(Region.USE_PREF_SIZE);
 		GridPane.setHgrow(numberInput, Priority.SOMETIMES);
@@ -91,15 +92,17 @@ public class App extends Application {
 		grid.add(formatBox, 1, 0);
 		grid.add(spacedCheckBox, 2, 0);
 
+		// second row (middle)
 		grid.add(outputText, 0, 1, GridPane.REMAINING, 1);
-		GridPane.setVgrow(outputText, Priority.ALWAYS);
-		outputText.wrappingWidthProperty().bind(
-				Bindings.createDoubleBinding(
+		GridPane.setVgrow(outputText, Priority.ALWAYS); // fill the remaining vertical space
+		outputText.wrappingWidthProperty().bind( // wrap the text when it overflows the grid's width
+				Bindings.createDoubleBinding( // text width = grid width - padding left and right
 						() -> grid.getLayoutBounds().getWidth() - 20,
 						grid.layoutBoundsProperty()
 				)
 		);
 
+		// last row
 		grid.add(fontBox, 0, 2, 2, 1);
 
 		grid.add(copyButton, 2, 2);
@@ -109,6 +112,7 @@ public class App extends Application {
 	}
 
 	private void setupBindings() {
+		// The generator depends on the selected output
 		Binding<TextGenerator> generator = Bindings.createObjectBinding(() -> {
 					switch (formatBox.getSelectionModel().getSelectedItem()) {
 						case "Hiragana":
@@ -119,8 +123,10 @@ public class App extends Application {
 							return new RoumajiGenerator(spacedCheckBox.isSelected());
 					}
 				},
-				formatBox.getSelectionModel().selectedItemProperty());
+				formatBox.getSelectionModel().selectedItemProperty()
+		);
 
+		// only Rōmaji and Hiragana support spacing
 		spacedCheckBox.disableProperty().bind(
 				Bindings.createBooleanBinding(
 						() -> !(generator.getValue() instanceof IrregularCasesGenerator),
@@ -134,7 +140,10 @@ public class App extends Application {
 				((IrregularCasesGenerator) gen).setSpaced(spacedCheckBox.isSelected());
 		});
 
+		// true when there's an error
 		SimpleBooleanProperty error = new SimpleBooleanProperty(false);
+
+		// update the text when the input, the generator or the spacing has changed
 		StringBinding numberText = Bindings.createStringBinding(
 				() -> {
 					int[] digits;
@@ -154,7 +163,7 @@ public class App extends Application {
 						return e.getMessage();
 					}
 
-					error.set(false);
+					error.set(false); // success
 					return number;
 				},
 				numberInput.textProperty(),
@@ -174,6 +183,7 @@ public class App extends Application {
 						.otherwise(outputText.getFill())
 		);
 
+		// disabled when there's an error or no text at all
 		copyButton.disableProperty().bind(error.or(Bindings.isEmpty(numberText)));
 
 		outputText.fontProperty().bind(
