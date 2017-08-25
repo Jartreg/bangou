@@ -139,7 +139,7 @@ public class App extends Application {
 				() -> {
 					int[] digits;
 					try {
-						digits = Main.getDigits(numberInput.getText().trim());
+						digits = Utilities.getDigits(numberInput.getText().trim());
 					} catch (NumberFormatException e) {
 						error.set(true);
 						return "This is not a valid number";

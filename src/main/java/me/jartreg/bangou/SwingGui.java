@@ -141,7 +141,7 @@ public class SwingGui {
 	private void update() {
 		int[] digits;
 		try {
-			digits = Main.getDigits(textField.getText().trim());
+			digits = Utilities.getDigits(textField.getText().trim());
 		} catch (NumberFormatException e) {
 			error("This is not a valid number");
 			return;
