@@ -10,9 +10,9 @@ public abstract class TextGenerator {
 
 		ArrayList<String> generatedNumber = new ArrayList<>();
 
-		for (int zeroes = 0; zeroes < digits.length; zeroes += 4) {
-			int index = digits.length - 1 - zeroes;
-			generatedNumber.addAll(0, generatePart(digits, index, zeroes));
+		for (int power = 0; power < digits.length; power += 4) {
+			int index = digits.length - 1 - power;
+			generatedNumber.addAll(0, generateDigitGroup(digits, index, power));
 		}
 
 		if (generatedNumber.size() == 0)
@@ -21,12 +21,12 @@ public abstract class TextGenerator {
 		return join(generatedNumber);
 	}
 
-	private ArrayList<String> generatePart(int[] digits, int lastIndex, int zeroesAfterPart) {
-		ArrayList<String> part = new ArrayList<>();
+	private ArrayList<String> generateDigitGroup(int[] digits, int lastIndex, int digitGroupPower) {
+		ArrayList<String> digitGroup = new ArrayList<>();
 		boolean containsNonZero = false;
 		boolean isOne = true;
 
-		for (int zeroes = 0, index = lastIndex; zeroes < 4 && index >= 0; zeroes++, index--) {
+		for (int power = 0, index = lastIndex; power < 4 && index >= 0; power++, index--) {
 			int digit = digits[index];
 
 			if (digit < 0 || digit > 9)
@@ -36,37 +36,37 @@ public abstract class TextGenerator {
 				continue;
 			containsNonZero = true;
 
-			if (zeroes != 0 || digit != 1)
+			if (power != 0 || digit != 1)
 				isOne = false;
 
-			String digitString = getDigit(digit, zeroes);
+			String digitString = getDigit(digit, power);
 			if (digitString != null && !digitString.isEmpty())
-				part.add(0, digitString);
+				digitGroup.add(0, digitString);
 		}
 
-		if (isOne && zeroesAfterPart != 0)
-			part.clear();
+		if (isOne && digitGroupPower != 0)
+			digitGroup.clear();
 
-		if (containsNonZero && zeroesAfterPart != 0) {
-			String suffix = getPartSuffix(zeroesAfterPart);
+		if (containsNonZero && digitGroupPower != 0) {
+			String suffix = getDigitGroupSuffix(digitGroupPower);
 
 			if (suffix == null)
 				throw new IllegalArgumentException("The number is too big");
 
 			if (!suffix.isEmpty())
-				part.add(suffix);
+				digitGroup.add(suffix);
 		}
 
-		return part;
+		return digitGroup;
 	}
 
 	protected String join(ArrayList<String> generatedNumber) {
 		return String.join("", generatedNumber);
 	}
 
-	protected abstract String getDigit(int digit, int zeroes);
+	protected abstract String getDigit(int digit, int power);
 
-	protected abstract String getPartSuffix(int zeroes);
+	protected abstract String getDigitGroupSuffix(int power);
 
 	protected abstract String getZero();
 }

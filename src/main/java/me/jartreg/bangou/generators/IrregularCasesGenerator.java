@@ -12,8 +12,8 @@ public abstract class IrregularCasesGenerator extends TextGenerator {
 	}
 
 	@Override
-	protected String getDigit(int digit, int zeroes) {
-		switch (zeroes) {
+	protected String getDigit(int digit, int power) {
+		switch (power) {
 			case 0:
 				return digit == 1 ? getOne() : getDigit(digit);
 			case 1:

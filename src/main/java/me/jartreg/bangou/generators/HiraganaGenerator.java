@@ -65,8 +65,8 @@ public class HiraganaGenerator extends IrregularCasesGenerator {
 	}
 
 	@Override
-	protected String getPartSuffix(int zeroes) {
-		switch (zeroes) {
+	protected String getDigitGroupSuffix(int power) {
+		switch (power) {
 			case 4:
 				return "まん";
 			case 8:

@@ -22,8 +22,8 @@ public class KanjiGenerator extends TextGenerator {
 	}
 
 	@Override
-	protected String getDigit(int digit, int zeroes) {
-		switch (zeroes) {
+	protected String getDigit(int digit, int power) {
+		switch (power) {
 			case 0:
 				return digit == 1 ? "一" : DIGITS[digit];
 			case 1:
@@ -38,8 +38,8 @@ public class KanjiGenerator extends TextGenerator {
 	}
 
 	@Override
-	protected String getPartSuffix(int zeroes) {
-		switch (zeroes) {
+	protected String getDigitGroupSuffix(int power) {
+		switch (power) {
 			case 4:
 				return "万";
 			case 8:
