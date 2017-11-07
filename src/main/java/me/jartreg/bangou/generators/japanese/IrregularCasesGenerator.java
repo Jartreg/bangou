@@ -1,4 +1,4 @@
-package me.jartreg.bangou.generators;
+package me.jartreg.bangou.generators.japanese;
 
 import me.jartreg.bangou.TextGenerator;
 

@@ -1,20 +1,20 @@
-package me.jartreg.bangou.generators;
+package me.jartreg.bangou.generators.japanese;
 
-public class HiraganaGenerator extends IrregularCasesGenerator {
+public class RoumajiGenerator extends IrregularCasesGenerator {
 	private static final String[] DIGITS = {
 			"",
 			"",
-			"に",
-			"さん",
-			"よん",
-			"ご",
-			"ろく",
-			"なな",
-			"はち",
-			"きゅう"
+			"ni",
+			"san",
+			"yon",
+			"go",
+			"roku",
+			"nana",
+			"hachi",
+			"kyū"
 	};
 
-	public HiraganaGenerator(boolean spaced) {
+	public RoumajiGenerator(boolean spaced) {
 		super(spaced);
 	}
 
@@ -25,52 +25,52 @@ public class HiraganaGenerator extends IrregularCasesGenerator {
 
 	@Override
 	public String getZero() {
-		return "れい";
+		return "rei";
 	}
 
 	@Override
 	protected String getOne() {
-		return "いち";
+		return "ichi";
 	}
 
 	@Override
-	public String getTen() {
-		return "じゅう";
+	protected String getTen() {
+		return "jū";
 	}
 
 	@Override
 	public String getHundred(int digit) {
 		switch (digit) {
 			case 3:
-				return "さんびゃく";
+				return "sanbyaku";
 			case 6:
-				return "ろっぴゃく";
+				return "roppyaku";
 			case 8:
-				return "はっぴゃく";
+				return "happyaku";
 		}
 
-		return DIGITS[digit] + "ひゃく";
+		return getDigit(digit) + "hyaku";
 	}
 
 	@Override
 	public String getThousand(int digit) {
 		switch (digit) {
 			case 3:
-				return "さんぜん";
+				return "sanzen";
 			case 8:
-				return "はっせん";
+				return "hassen";
 		}
 
-		return DIGITS[digit] + "せん";
+		return getDigit(digit) + "sen";
 	}
 
 	@Override
 	protected String getDigitGroupSuffix(int power) {
 		switch (power) {
 			case 4:
-				return "まん";
+				return "man";
 			case 8:
-				return "おく";
+				return "oku";
 		}
 
 		return null;
@@ -78,6 +78,6 @@ public class HiraganaGenerator extends IrregularCasesGenerator {
 
 	@Override
 	protected String getSpace() {
-		return "　";
+		return " ";
 	}
 }

@@ -8,10 +8,10 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Tooltip;
 import me.jartreg.bangou.TextGenerator;
-import me.jartreg.bangou.generators.HiraganaGenerator;
-import me.jartreg.bangou.generators.IrregularCasesGenerator;
-import me.jartreg.bangou.generators.KanjiGenerator;
-import me.jartreg.bangou.generators.RoumajiGenerator;
+import me.jartreg.bangou.generators.japanese.HiraganaGenerator;
+import me.jartreg.bangou.generators.japanese.IrregularCasesGenerator;
+import me.jartreg.bangou.generators.japanese.KanjiGenerator;
+import me.jartreg.bangou.generators.japanese.RoumajiGenerator;
 import me.jartreg.bangou.ui.Language;
 import me.jartreg.bangou.ui.OutputTextDisplay;
 

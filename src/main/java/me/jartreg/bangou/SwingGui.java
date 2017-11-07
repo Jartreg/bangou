@@ -1,9 +1,9 @@
 package me.jartreg.bangou;
 
-import me.jartreg.bangou.generators.IrregularCasesGenerator;
-import me.jartreg.bangou.generators.HiraganaGenerator;
-import me.jartreg.bangou.generators.KanjiGenerator;
-import me.jartreg.bangou.generators.RoumajiGenerator;
+import me.jartreg.bangou.generators.japanese.IrregularCasesGenerator;
+import me.jartreg.bangou.generators.japanese.HiraganaGenerator;
+import me.jartreg.bangou.generators.japanese.KanjiGenerator;
+import me.jartreg.bangou.generators.japanese.RoumajiGenerator;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
